@@ -7,10 +7,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.handler.MappedInterceptor;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+import org.springframework.web.servlet.view.ResourceBundleViewResolver;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -20,8 +22,18 @@ import java.io.InputStream;
 @ComponentScan(basePackages = {"com.arief.mvc.controllers"})
 public class MyWebAppContext implements WebMvcConfigurer {
 
+
+    @Bean
+    public ViewResolver pdfViewResolver(){
+        ResourceBundleViewResolver viewResolver = new ResourceBundleViewResolver();
+        viewResolver.setBasename("pdf-view");
+        viewResolver.setOrder(1);
+        return viewResolver;
+    }
+
     public void configureViewResolvers(ViewResolverRegistry registry) {
         registry.jsp("/WEB-INF/views/",".jsp");
+        registry.viewResolver(pdfViewResolver());
     }
     @Bean
     public CommonsMultipartResolver commonsMultipartResolver(){

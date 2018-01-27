@@ -17,6 +17,7 @@
         <li><a href="${pageContext.servletContext.contextPath}/mvc/upload">Form Upload Page</a></li>
         <li><a href="${pageContext.servletContext.contextPath}/mvc/pages/hello">Hello Page</a></li>
         <li><a href="${pageContext.servletContext.contextPath}/mvc/pages/hello-world">Hello World Page</a></li>
+        <li><a href="${pageContext.servletContext.contextPath}/mvc/get-pdf">get PDF Page</a></li>
     </ul>
 </body>
 </html>
