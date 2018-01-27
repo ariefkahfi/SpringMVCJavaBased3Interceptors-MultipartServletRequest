@@ -42,7 +42,14 @@ public class MyWebAppContext implements WebMvcConfigurer {
         return multipartResolver;
     }
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+                .addResourceHandler("/images/**")
+                .addResourceLocations("file:/usr/local/apache/uploads/");
 
+//                .addResourceLocations("file:/usr/local/apache/tomcat/apache-tomcat-8.5.20/webapps/uploads/");
+    }
 
     public void addInterceptors(InterceptorRegistry registry) {
         registry
